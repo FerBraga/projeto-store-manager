@@ -8,11 +8,17 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const [data] = await Model.getById(id);
-  console.log(data);
+  // console.log(data);
   if (data === undefined) {
     throw Error;
   }
   return data;
 };
 
-module.exports = { getAll, getById };
+const insert = async (name) => {
+  const data = await Model.insert(name);
+  const response = { id: data, name };
+  return response;
+};
+ 
+module.exports = { getAll, getById, insert };
