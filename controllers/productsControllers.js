@@ -1,4 +1,4 @@
-const services = require('../services/services');
+const services = require('../services/productsServices');
 
 const getAll = async (req, res, next) => {
   try {

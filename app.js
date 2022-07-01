@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require('./routes/routes');
+const productsRoutes = require('./routes/productsRoutes');
 const errorMiddleware = require('./middlewares/errorMiddlewares');
 
 const app = express();
@@ -11,7 +11,7 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.use('/products', routes);
+app.use('/products', productsRoutes);
 
 app.use(errorMiddleware);
 
