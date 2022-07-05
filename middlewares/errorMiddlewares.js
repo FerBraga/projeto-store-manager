@@ -31,6 +31,10 @@ const errors = [
     status: 404,
     message: { message: 'Product not found' },
   },
+  {
+    status: 404,
+    message: { message: 'Sale not found' },
+  },
 
 ];
 
