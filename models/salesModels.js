@@ -1,16 +1,23 @@
 const connection = require('./connection');
 
 const getAll = async () => {
-  const query = 'SELECT * FROM StoreManager.sales';
+  const query = `SELECT b.sale_id AS saleId, a.date, b.product_id AS productId,
+  b.quantity FROM StoreManager.sales AS a
+  INNER JOIN StoreManager.sales_products AS b
+  ON a.id = b.sale_id`;
   const [data] = await connection.execute(query);
-  // console.log(data);
+  console.log(data, 'all');
   return data;
 };
 
 const getById = async (id) => {
-  const query = 'SELECT * FROM StoreManager.sales WHERE id=?';
+  const query = `SELECT a.date, b.product_id AS productId,
+  b.quantity FROM StoreManager.sales AS a
+  INNER JOIN StoreManager.sales_products AS b
+  ON a.id = b.sale_id
+  WHERE a.id=?`;
   const [data] = await connection.execute(query, [id]);
-  // console.log(data);
+  console.log(data, 'data');
   return data;
 };
 
@@ -27,13 +34,6 @@ const findId = async () => {
   return result;
 };
 
-const findIdSales = async () => {
-  const query = 'SELECT id FROM StoreManager.sales';
-  const [data] = await connection.execute(query); 
-  const result = data.map((element) => element.id);
-  return result;
-};
-
 const insertSales = async (id, body) => {
   const query = 'INSERT INTO StoreManager.sales_products'
      + '(sale_id, product_id, quantity) VALUES (?, ?, ?)';
@@ -41,4 +41,4 @@ const insertSales = async (id, body) => {
     .map(async (element) => connection.execute(query, [id, element.productId, element.quantity])));
 };
 
-module.exports = { insertSales, sale, findId, getAll, getById, findIdSales };
+module.exports = { insertSales, sale, findId, getAll, getById };

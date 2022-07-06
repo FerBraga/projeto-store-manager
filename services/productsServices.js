@@ -8,7 +8,6 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const [data] = await Model.getById(id);
-  // console.log(data);
   if (data === undefined) {
     throw Error;
   }

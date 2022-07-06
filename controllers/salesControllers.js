@@ -4,6 +4,7 @@ const Model = require('../models/salesModels');
 const getAll = async (req, res, next) => {
   try {
     const data = await services.getAll();
+    // const conv = data.map((element) => )
     res.status(200).json(data);
   } catch (error) {
     next('8');
@@ -37,7 +38,7 @@ const insertSales = async (req, res, next) => {
     };
    return res.status(201).json(final);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     next('0');
   }
 };

@@ -6,13 +6,11 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  const idd = await Model.findIdSales();
-  const found = idd.includes(id);
-  console.log(found);
-  if (!found) {
+  const data = await Model.getById(id);
+  console.log('dataID', data);
+  if (data.length === 0) {
     throw Error;
   }
-  const data = await Model.getById(id);
   return data;
 };
 
