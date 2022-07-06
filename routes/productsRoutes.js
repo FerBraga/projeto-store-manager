@@ -10,4 +10,6 @@ router.get('/:id', controllers.getById);
 
 router.post('/', authName, controllers.insert);
 
+router.put('/:id', authName, controllers.update);
+
 module.exports = router;

@@ -6,7 +6,6 @@ const getAll = async () => {
   INNER JOIN StoreManager.sales_products AS b
   ON a.id = b.sale_id`;
   const [data] = await connection.execute(query);
-  console.log(data, 'all');
   return data;
 };
 
@@ -17,7 +16,6 @@ const getById = async (id) => {
   ON a.id = b.sale_id
   WHERE a.id=?`;
   const [data] = await connection.execute(query, [id]);
-  console.log(data, 'data');
   return data;
 };
 

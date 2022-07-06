@@ -10,7 +10,6 @@ const getAll = async () => {
 const getById = async (id) => {
   const query = 'SELECT * FROM StoreManager.products WHERE id=?';
   const [data] = await connection.execute(query, [id]);
-  // console.log(data);
   return data;
 };
 
@@ -22,4 +21,12 @@ const insert = async (name) => {
   return insertId;
 };
 
-module.exports = { getAll, getById, insert };
+const update = async ({ name, id }) => {
+  console.log('name parameter', name);
+  const query = 'UPDATE StoreManager.products SET name=? WHERE id=?';
+  const [data] = await connection.execute(query, [name, id]);
+  console.log('data model', data);
+  return data;
+};
+
+module.exports = { getAll, getById, insert, update };

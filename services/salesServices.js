@@ -7,7 +7,6 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const data = await Model.getById(id);
-  console.log('dataID', data);
   if (data.length === 0) {
     throw Error;
   }

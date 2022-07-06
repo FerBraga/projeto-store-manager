@@ -32,4 +32,23 @@ const insert = async (req, res, next) => {
   }
 };
 
-module.exports = { getAll, getById, insert };
+const update = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    console.log('id', id);
+    const { name } = req.body;
+    // const nome = JSON.stringify(name);
+    // console.log('nome json', nome);
+    await services.update({ name, id });
+    console.log('nome 40', name);
+    const ojb = {
+      id,
+      name,
+    };
+    return res.status(200).json(ojb);
+  } catch (error) {
+    return next('0');
+  }
+};
+
+module.exports = { getAll, getById, insert, update };
